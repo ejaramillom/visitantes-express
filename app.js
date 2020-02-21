@@ -13,16 +13,23 @@ const schema = mongoose.Schema({
 // definimos el modelo
 const Visitor = mongoose.model("Visitor", schema);
 
-app.get('/:nombre', (req, res) => {
-  let nombre = (!req.params.nombre || req.params.nombre.length === 0 ? "Anónimo" : req.params.nombre);
+app.get('/', (req, res) => {
+  Visitor.create({ name: "Anónimo" }, function(err) {
+    if (err) return console.error(err);
+  });
+  res.send ('<h1>El visitante fue almacenado con éxito</h1>');
+});
+
+app.get('/:visitante', (req, res) => {
+  let nombre = req.params.visitante;
   Visitor.create({ name: nombre }, function(err) {
     if (err) return console.error(err);
   });
-  res.send ('<h1>El visitante ${nombre} fue almacenado con éxito</h1>');
+  res.send ('<h1>El visitante fue almacenado con éxito</h1>');
 });
 
-Visitor.find(function(err, response){
-   console.log(response);
-});
+// Visitor.find(function(err, response){
+//    console.log(response);
+// });
 
 app.listen(3000, () => console.log('Listening on port 3000!'));
