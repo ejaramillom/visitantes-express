@@ -20,8 +20,8 @@ app.get('/', (req, res) => {
   res.send ('<h1>El visitante fue almacenado con éxito</h1>');
 });
 
-app.get('/:visitante', (req, res) => {
-  let nombre = req.params.visitante;
+app.get('/:name', (req, res) => {
+  let nombre = req.params.name;
   Visitor.create({ name: nombre }, function(err) {
     if (err) return console.error(err);
   });
