@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/:name', (req, res) => {
-  let nombre = (!req.params.name !! req.params.name.length === 0 ? "Anónimo" : req.params.name );
+  let nombre = (!req.params.name || req.params.name.length === 0 ? "Anónimo" : req.params.name );
   Visitor.create({ name: nombre }, function(err) {
     if (err) return console.error(err);
   });
