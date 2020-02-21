@@ -14,7 +14,7 @@ const schema = mongoose.Schema({
 const Visitor = mongoose.model("Visitor", schema);
 
 app.get('/', (req, res) => {
-  let name = req.query.nombre;
+  let name = req.query.name;
   if (!name || name.length === 0) {
     name = "Anónimo";
   }
