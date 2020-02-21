@@ -6,7 +6,7 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost:27017/mydatabas
 mongoose.connection.on("error", function(e) { console.error(e); });
 // el resto del código
 // definimos el schema
-const schema = mongoose.Schema({
+const schema = new mongoose.Schema({
   date: { type: Date, default: Date.now },
   name: String,
 });
